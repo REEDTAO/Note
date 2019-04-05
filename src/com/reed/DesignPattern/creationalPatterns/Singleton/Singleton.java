@@ -84,3 +84,6 @@ package com.reed.DesignPattern.creationalPatterns.Singleton;
  */
 public class Singleton {
 }
+
+
+
