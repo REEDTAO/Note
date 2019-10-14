@@ -6,5 +6,5 @@ import com.reed.Annotation.CarType;
 public class BMW implements BaseCar {
     public void getMyName(){
         System.out.println("BMW");
-    }
+}
 }
