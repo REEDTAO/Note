@@ -1,6 +1,8 @@
 package com.reed.Annotation;
 
-import club.reed.Anno.*;
+
+
+import com.reed.Annotation.Anno.*;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -36,6 +38,7 @@ public class Utils {
         Field[] declaredFields = clazz.getDeclaredFields();
         StringBuilder em = new StringBuilder();
         String ec = "";
+        HashMap<Object, Object> map = new HashMap<>();
         for (Field field : declaredFields) {
             try {
                 field.setAccessible(true);
@@ -67,13 +70,14 @@ public class Utils {
                 }
             } catch (Exception e) {
                 System.out.println(e);
-                throw new RuntimeException();
+                map.put("ec","1");
+                map.put("em",e.getMessage());
+                return map;
             }
         }
         if (em.toString().length() == 0) {
             em.append("参数正确");
         }
-        HashMap<Object, Object> map = new HashMap<>();
         map.put("ec", ec);
         map.put("em", em);
         map.put("data", "");
