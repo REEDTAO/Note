@@ -2,8 +2,17 @@
 <note>
     <to>Tove</to>
     <no>
-        <by>reed</by>>
+        <by>reed</by>
     </no>
+    <not>
+        <by>reed</by>
+        <no>
+            <by>reed</by>
+            <no>
+                <by>reed</by>
+            </no>
+        </no>
+    </not>
     <from>idea</from>
 </note>
 
