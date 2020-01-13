@@ -4,6 +4,12 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 调用
+ *  BufferedReader xmlReader = XmlToMapUtils.getXmlReader(path);
+ *  Map praser = XmlToMapUtils.praser(xmlReader, new HashMap(),-2);
+ *  xmlReader.close();
+ */
 public class XmlToMapUtils {
     public static BufferedReader getXmlReader(String path){
         try {
@@ -53,7 +59,6 @@ public class XmlToMapUtils {
             temp = reader.read();
         }
     }
-
     //检查获取的key是否符合标准
     private static boolean checkIsKey(String string) {
         if(string.startsWith("?")&&string.endsWith("?"))return false;
@@ -61,7 +66,7 @@ public class XmlToMapUtils {
         if(string.startsWith("!--")&&string.endsWith("--"))return false;
         return true;
     }
-    //获取到下一个给出字符的字符串
+    //获取到下一个给出字符中间的字符串
     private static String getStringFromIndexToChar(BufferedReader reader, char c) throws IOException {
         int read = reader.read();
         StringBuilder string = new StringBuilder();
