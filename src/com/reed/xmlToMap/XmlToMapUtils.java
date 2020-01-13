@@ -1,6 +1,7 @@
 package com.reed.xmlToMap;
 
 import java.io.*;
+import java.util.HashMap;
 import java.util.Map;
 
 public class XmlToMapUtils {
@@ -12,33 +13,42 @@ public class XmlToMapUtils {
             return null;
         }
     }
-    public static Map praser(BufferedReader reader,Map map) throws IOException {
-        int read = reader.read();
+    public static Map praser(BufferedReader reader,Map map,int tmp) throws IOException {
+        int read;
+        if(tmp==-2){
+            read = reader.read();
+        }else read = tmp;
         char temp;
-        if(read!=-1){
+        while(read!=-1){
             temp = (char)read;
-        }else{
-            return map;
-        }
-        //跳过标签间隔空白，换行，回车
-        if(read=='\t'||read=='\n'||read==' ')
-            skipEmpty(reader);
+            //跳过标签间隔空白，换行，回车
+            if(read=='\r'||read=='\n'||read==' ')
+                temp = skipEmpty(reader);
+            if(temp=='<'){
+                String key = getStringFromIndexToChar(reader,'>');
+                if(checkIsKey(key)) {
+                    temp =skipEmpty(reader);
+                    if(temp!='<'){
+                        String value = getStringFromIndexToChar(reader,'<');
+                        map.put(key,value);
 
-        if(temp=='<'){
-            String string = getStringFromIndexToChar(reader,'>');
-            if(checkIsKey(string)) {
-                temp =(char)reader.read();
-                if(temp!='<'){
-
+                    }else{
+                        HashMap<String,Object> next = new HashMap<>();
+                        map.put(key,next);
+                        praser(reader,next,temp);
+                    }
                 }
             }
+            read = reader.read();
         }
-        return null;
+        return map;
     }
 
     private static boolean checkIsKey(String string) {
         return true;
     }
+
+
 
     //获取到下一个给出字符的字符串
     private static String getStringFromIndexToChar(BufferedReader reader, char c) throws IOException {

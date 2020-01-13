@@ -1,22 +1,10 @@
-<?xml version="1.0" encoding="utf-8" ?>
+
 <note>
-<temp />
-<to>Tove</to>
-<from>Jani</from>
-<heading>Reminder</heading>
-<body>Don't forget me this weekend!</body>
+    <to>Tove</to>
     <no>
-        <to>Tove</to>
-        <from>Jani</from>
-        <heading>Reminder</heading>
-        <body>Don't forget me this weekend!</body>
+        <by>reed</by>>
     </no>
-    <not>
-        <to>Tove</to>
-        <from>Jani</from>
-        <heading>Reminder</heading>
-        <body>Don't forget me this weekend!</body>
-    </not>
+    <from>idea</from>
 </note>
 
 

@@ -7,10 +7,10 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-//        Map map = Utils.xmlToMap("C:\\Users\\Elead\\Desktop\\work\\src\\club\\reed\\collection\\xmlToMap\\test.xml");
-//        System.out.println(map);
-        BufferedReader xmlReader = XmlToMapUtils.getXmlReader("C:\\Users\\Elead\\Desktop\\work\\src\\club\\reed\\collection\\xmlToMap\\test.xml");
-        Map praser = XmlToMapUtils.praser(xmlReader, new HashMap());
-
+        Map map = Utils.xmlToMap("C:\\Users\\luwei\\IdeaProjects\\Note\\src\\com\\reed\\xmlToMap\\test.xml");
+        System.out.println(map);
+//        BufferedReader xmlReader = XmlToMapUtils.getXmlReader("C:\\Users\\luwei\\IdeaProjects\\Note\\src\\com\\reed\\xmlToMap\\test.xml");
+//        Map praser = XmlToMapUtils.praser(xmlReader, new HashMap(),-2);
+//        System.out.println(praser);
     }
 }

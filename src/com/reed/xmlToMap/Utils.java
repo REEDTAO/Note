@@ -26,13 +26,12 @@ public class Utils {
     }
 
     public static Map  xmlPraser(String xmlContent){
-        //去除注释,换格式
-        String s = xmlContent.replaceAll("<!--((?!<!--).).*-->", "")
-                .replaceAll("<((?!<).)+/>","")
-                .replaceAll("<\\?((?!<).)+\\?>","")
-                .replaceAll("> *<","><")
-                .replaceAll("[\r\n]","")
-                .replaceAll("</((?!<).)+>","}")
+        String s = xmlContent.replaceAll("<!--((?!<!--).).*-->", "")//去除注释
+                .replaceAll("<((?!<).)+/>","")//去除不标准的标签
+                .replaceAll("<\\?((?!<).)+\\?>","")//去除文档声明
+                .replaceAll("> *<","><")//去除标签之间的空格
+                .replaceAll("[\r\n]","")//去除回车换行
+                .replaceAll("</((?!<).)+>","}")//将结束标签换位“}”
                 .replaceAll(">","=")
                 .replaceAll("<","{");
         System.out.println(s);
@@ -52,16 +51,13 @@ public class Utils {
             }
             if(chars[i]=='{'){
                 String temp = getStringFromIndexToChar(chars, i+1, '=');
-                //System.out.println(temp);
                 i+=temp.length()+2;
                 if(chars[i]!='{'){
                     String value = getStringFromIndexToChar(chars, i, '}');
-                    //System.out.println(temp+"     "+value);
                     map.put(temp,value);
                 }else{
                     HashMap<String,Object> next = new HashMap<>();
                     map.put(temp,next);
-                    //System.out.println(temp);
                     i=praser(chars,i,next);
                 }
             }
